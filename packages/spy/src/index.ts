@@ -128,6 +128,18 @@ export function createMockInstance(options: MockInstanceOption = {}): Mock<Proce
     return mock.mockImplementationOnce(() => value)
   }
 
+  mock.mockThrow = function mockThrow(value) {
+    return mock.mockImplementation(() => {
+      throw value
+    })
+  }
+
+  mock.mockThrowOnce = function mockThrowOnce(value) {
+    return mock.mockImplementationOnce(() => {
+      throw value
+    })
+  }
+
   mock.mockResolvedValue = function mockResolvedValue(value) {
     return mock.mockImplementation(() => Promise.resolve(value))
   }
